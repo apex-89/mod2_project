@@ -46,9 +46,10 @@ app.get('/get_products', async (req,res) => {
     res.json(response);
 });
 
-app.get('/get_specific_product/:product_id', (req,res) => {
-    req.params.product_id
-    res.send("Get ")
+app.get('/get_specific_product/:product_id', async (req,res) => {
+    let id = req.params.product_id
+    let response = await MyProduct.findById(id)
+    res.send(response)
 })
 
 app.post('/create_product', async (req, res) =>{
@@ -76,8 +77,8 @@ app.delete('/delete_product/', (req,res) => {
     let response = MyProduct.findByIdAndDelete(req.body.id, {})
 })
 
-app.post('/update_product', (req,res) => {
-    let response = MyProduct.findByIdAndUpdate(req.body.id, {})
+app.post('/update_product', async (req,res) => {
+    let response = await MyProduct.findByIdAndUpdate(req.body.id, {})
     res.json(response);
 })
 

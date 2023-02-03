@@ -5,7 +5,7 @@ let submitButton = document.getElementById('submit-button');
 submitButton.addEventListener('click', async () => {
 
 
-    let productString = document.getElementById('name-input').value.toLowerCase();
+    let productString = document.getElementById('name-input').value;
     let urlString = document.getElementById('img-input').value;
     let descriptionString = document.getElementById('description-input').value;
     let priceNumber = +document.getElementById('price-input').value;

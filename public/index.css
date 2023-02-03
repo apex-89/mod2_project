@@ -1,0 +1,42 @@
+#storeFront {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+
+.product {
+    text-align: center;
+}
+
+#navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.each-product{
+    margin: 15px;
+}
+
+h5{ 
+    margin: 0px;
+}
+
+#add-new{
+    cursor: pointer;
+}
+#add-new:hover{
+    color: red;
+}
+
+h1{
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 80px;
+}
+
+img{
+    max-height: 150px;
+    cursor: pointer;
+}
