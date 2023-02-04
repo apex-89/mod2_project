@@ -33,6 +33,21 @@ const getSingleProd = async () => {
         <button id="delete-button">DELETE</button>
     </div>
     `
+    let deleteButton = document.getElementById("delete-button");
+    deleteButton.addEventListener("click", async () => {
+        let result = confirm("Want to delete?");
+        if (result) {
+            let response = await fetch(`http://localhost:5000/delete_product/?id=${id}`, {
+                method: "DELETE"
+            })
+            if (response.status === 200) {
+                console.log("delete successful");
+                window.location.href = "../index.html";
+            } else {
+                console.log("delete failed");
+            }
+        }    
+    })
 }
 
 
@@ -43,4 +58,3 @@ homeButton.addEventListener("click", () => {
     window.location.href = "../index.html";
 });
  
-

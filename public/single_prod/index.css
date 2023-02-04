@@ -39,6 +39,9 @@ img{
     max-height: 275px;
 }
 
+#delete-div{
+    text-align: center;
+}
 #delete-button{
     margin: 15px;
 }

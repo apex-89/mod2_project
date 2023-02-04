@@ -73,13 +73,17 @@ app.post('/create_product', async (req, res) =>{
 
 })
 
-app.delete('/delete_product/', (req,res) => {
-    let response = MyProduct.findByIdAndDelete(req.body.id, {})
+app.delete('/delete_product/', async (req,res) => {
+    let product = req.query.id
+    let response = await MyProduct.findByIdAndDelete(product)
+    res.send(response)
 })
 
-app.post('/update_product', async (req,res) => {
-    let response = await MyProduct.findByIdAndUpdate(req.body.id, {})
-    res.json(response);
+app.put('/update_product/', async (req,res) => {
+    let product = req.query.id
+    let response = await MyProduct.findByIdAndUpdate(product, req.body)
+    res.send(response);
+    console.log(response)
 })
 
 
