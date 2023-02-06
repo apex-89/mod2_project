@@ -9,6 +9,27 @@ let id = params.id;
 
 console.log(id);
 
+let searchButton = document.getElementById("search-button");
+let searchInput = document.getElementById("product-search");
+
+searchButton.addEventListener("click", async () => {
+    console.log("search button clicked");
+    
+    let searchValue = searchInput.value;
+    console.log(searchValue);
+    let response = await fetch(`/search_product/?product=${searchValue}`);
+    console.log(response);
+    let finalData = await response.json();
+    console.log(finalData);
+    console.log(finalData._id)
+    if (finalData._id === undefined) {
+        alert("Product not found");
+    }else {
+        window.location.href = `/single_prod/?id=${finalData._id}`;
+    }
+  
+});
+    
 let container = document.getElementById("product-info")
 
 // use that ID to get info from collection
@@ -34,6 +55,9 @@ const getSingleProd = async () => {
     </div>
     `
     let deleteButton = document.getElementById("delete-button");
+    let quantity = document.getElementById("amt-in-stock");
+    let buyButton = document.getElementById("buy-button");
+    
     deleteButton.addEventListener("click", async () => {
         let result = confirm("Want to delete?");
         if (result) {
@@ -48,6 +72,33 @@ const getSingleProd = async () => {
             }
         }    
     })
+    const disableButttonCheck = () => {
+        if (finalData.productAmt === 0) {
+            buyButton.disabled = true;
+            quantity.textContent = "Out of Stock";
+            return;
+        }  
+    }
+    disableButttonCheck();
+   
+    buyButton.addEventListener("click", async () => {
+        let response = await fetch(`http://localhost:5000/update_product/?id=${id}`, {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({productAmt: finalData.productAmt -= 1})
+        })
+        if (response.status === 200) {
+            // finalData.productAmt -= 1;
+            console.log("purchase successful");
+            quantity.innerHTML = `Quantity: ${finalData.productAmt}`;
+            console.log(finalData.productAmt)
+        } else {
+            console.log("purchase failed");
+        }   
+        disableButttonCheck();  
+    })
 }
 
 
@@ -57,4 +108,6 @@ getSingleProd();
 homeButton.addEventListener("click", () => {
     window.location.href = "../index.html";
 });
+
+
  

@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 // NEED TO PUT OBJECT MODEL
-const MyProduct = require('./models/products') 
+const MyProduct = require('./models/products') ;
 
 // create app by calling express function
 const app = express();
@@ -50,7 +50,19 @@ app.get('/get_specific_product/:product_id', async (req,res) => {
     let id = req.params.product_id
     let response = await MyProduct.findById(id)
     res.send(response)
-})
+});
+
+app.get('/search_product/', async (req,res) => {
+    let productName = req.query
+    console.log(req.query)
+    let response = await MyProduct.findOne(productName)
+    if(response !== null){
+    res.send(response)
+    }else{
+        res.send(req.query)
+    }
+    console.log(response)
+});
 
 app.post('/create_product', async (req, res) =>{
     const {productString: product, urlString: imgUrl, descriptionString: description, priceNumber: price, inventoryNumber: productAmt} = req.body;
@@ -71,20 +83,20 @@ app.post('/create_product', async (req, res) =>{
     }
     res.send(returnedValue);
 
-})
+});
 
 app.delete('/delete_product/', async (req,res) => {
     let product = req.query.id
     let response = await MyProduct.findByIdAndDelete(product)
     res.send(response)
-})
+});
 
 app.put('/update_product/', async (req,res) => {
     let product = req.query.id
     let response = await MyProduct.findByIdAndUpdate(product, req.body)
     res.send(response);
     console.log(response)
-})
+});
 
 
 app.listen(5000, () => {
