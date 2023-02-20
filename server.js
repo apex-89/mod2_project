@@ -52,16 +52,16 @@ app.get('/get_specific_product/:product_id', async (req,res) => {
     res.send(response)
 });
 
+
 app.get('/search_product/', async (req,res) => {
-    let productName = req.query
-    console.log(req.query)
-    let response = await MyProduct.findOne(productName)
+    let productName = req.query.product
+    let regex = new RegExp(["^", productName, "$"].join(""), "i");
+    let response = await MyProduct.findOne({product: regex})
     if(response !== null){
     res.send(response)
     }else{
         res.send(req.query)
     }
-    console.log(response)
 });
 
 app.post('/create_product', async (req, res) =>{
@@ -95,7 +95,6 @@ app.put('/update_product/', async (req,res) => {
     let product = req.query.id
     let response = await MyProduct.findByIdAndUpdate(product, req.body)
     res.send(response);
-    console.log(response)
 });
 
 

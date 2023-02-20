@@ -1,3 +1,7 @@
+body{
+    background-color: #9f496e;
+}
+
 #storeFront {
    display: flex;
    flex-direction: row;
@@ -8,6 +12,14 @@
 .product {
     text-align: center;
     margin: 15px;
+    border: 2px solid black;
+    border-radius: 15px;
+    background-color: #f2ebe5;
+}
+
+.product h4{
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 #navbar {
@@ -16,11 +28,7 @@
     justify-content: space-around;
 }
 
-.each-product{
-    margin: 15px;
-}
-
-h5{ 
+#navbar h4{ 
     margin: 0px;
 }
 
@@ -31,13 +39,28 @@ h5{
     color: red;
 }
 
-h1{
+#banner{
     text-align: center;
-    margin-top: 60px;
-    margin-bottom: 80px;
+    background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2Fc0%2F5d%2Fc6%2Fc05dc68e1dcd22ebb9c952ab7e8624fe.jpg&f=1&nofb=1&ipt=3a1afe13192ebd5bf92c6516ec0d3edc24507973fa86756889820fbf492ba21e&ipo=images);
+    background-position: top;
+    height: 200px;
+}
+@font-face {
+    font-family: infinite-justice;
+    src: url(ufonts.com_infinite-justice.ttf);
+}
+
+#banner h1{
+    font-family: infinite-justice;
+    -webkit-text-stroke: 2px black;
+    font-size: 70px;
+    text-align: center; 
+    padding-top: 100px;
+    color: #FECD45;
 }
 
 img{
     max-height: 150px;
     cursor: pointer;
+    padding: 15px;
 }

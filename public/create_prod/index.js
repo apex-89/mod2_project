@@ -1,6 +1,11 @@
 console.log("js file connected");
 
 let submitButton = document.getElementById('submit-button');
+let homeButton = document.getElementById('homeButton');
+
+homeButton.addEventListener('click', () => {
+    window.location.href = "../index.html";
+})
 
 submitButton.addEventListener('click', async () => {
 
@@ -28,22 +33,18 @@ submitButton.addEventListener('click', async () => {
     })
 
     let uploadStatusTag = document.getElementById('upload-status');
-        console.log(response.status);
         if (response.status === 200) {
-            console.log(response);
             console.log("upload complete!!!");
             uploadStatusTag.textContent = "Upload Completed";
             uploadStatusTag.style.color = "green";
 
         } else {
-            console.log(response);
             console.log("upload failed");
-            console.log;
             uploadStatusTag.textContent = "Upload Failed";
             uploadStatusTag.style.color = "red";
         }
         setTimeout(() => {
-            window.location.reload();
+            window.location.href = "../index.html";
         }, 750);
 });
 

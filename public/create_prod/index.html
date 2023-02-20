@@ -9,32 +9,36 @@
     <link rel="stylesheet" href="./index.css">
 </head>
 <body>
-    <div id="container">
-        <a href="../index.html">HOME</a>
-        <p id="upload-status"></p>
+    <div class="container">
+        <nav id="navbar">
+            <h4 id="homeButton">Home</h4>
+        </nav>
         <div class="input-container">
-            <label for="name-input">Product</label>
-            <input type="text" id="name-input"/>
+            <p id="upload-status"></p>
+            <div class="single-inputs">
+                <label for="name-input">Product:</label><br>
+                <input type="text" id="name-input"/>
+            </div>
+            <div class="single-inputs">
+                <label for="img-input">Image Url:</label><br>
+                <input type="text" id="img-input"/>
+            </div>
+            <div class="single-inputs">
+                <label for="price-input">Price:</label><br>
+                <input type="number" id="price-input"/>
+            </div>
+            <div class="single-inputs">
+                <label for="quantity-input">Amount to stock:</label><br>
+                <input type="number" id="quantity-input"/>
+            </div>
+            <div class="single-inputs">
+                <label for="description-input">Description:</label><br>
+                <textarea name="description" id="description-input" cols="30" rows="10"></textarea>
+            </div>
+            <div id="submit-button">
+                <button>Add to Stockroom</button>
+            </div>
         </div>
-        <div class="input-container">
-            <label for="img-input">Image Url</label>
-            <input type="text" id="img-input"/>
-        </div>
-        <div class="input-container">
-            <label for="description-input">Description</label>
-            <input type="string" id="description-input"/>
-        </div>
-        <div class="input-container">
-            <label for="price-input">Price</label>
-            <input type="number" id="price-input"/>
-        </div>
-        <div class="input-container">
-            <label for="quantity-input">Amount to stock</label>
-            <input type="number" id="quantity-input"/>
-        </div>
-        <button id="submit-button">Add to Stockroom</button>
     </div>
-    
-
 </body>
 </html>

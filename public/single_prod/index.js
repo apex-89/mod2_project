@@ -16,12 +16,8 @@ searchButton.addEventListener("click", async () => {
     console.log("search button clicked");
     
     let searchValue = searchInput.value;
-    console.log(searchValue);
     let response = await fetch(`/search_product/?product=${searchValue}`);
-    console.log(response);
     let finalData = await response.json();
-    console.log(finalData);
-    console.log(finalData._id)
     if (finalData._id === undefined) {
         alert("Product not found");
     }else {

@@ -1,3 +1,7 @@
+body{
+    background-color: #9f496e;
+}
+
 #product{
     display: flex;
     flex-direction: column;
@@ -20,7 +24,9 @@
     margin: 0 auto;
     max-width: 70%;
     border: 2px solid black;
+    border-radius: 15px;
     padding: 15px;
+    background-color: #f2ebe5;
 }
 
 nav{
@@ -29,6 +35,13 @@ nav{
     align-items: center;
     margin: 0 auto;
     max-width: 70%;
+}
+
+#homeButton{
+    cursor: pointer;
+}
+#homeButton:hover{
+    color: red;
 }
 
 #buy-button{
@@ -48,14 +61,19 @@ img{
 
 #homeButton{
     margin: 15px;
+    cursor: pointer;
+}
+
+#homeButton:hover{
+    color: red;
 }
 
 #search-div{
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    margin: 0 auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 15px;
 }
 
 label {
@@ -67,3 +85,4 @@ input,
 label {
     margin: 0.4rem 0;
 }
+

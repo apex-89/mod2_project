@@ -1,5 +1,11 @@
 console.log("js running");
 
+let homeButton = document.getElementById('homeButton');
+
+homeButton.addEventListener('click', () => {
+    window.location.href = "../index.html";
+})
+
 // get the id from the URL
 const params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
@@ -18,11 +24,10 @@ const putPlaceholder = async () => { // SHOULD CHANGE THE FUNCTION NAME
     
     let finalData = await response.json();
     // use this finalData to make some tags, etc.
-    console.log(finalData);
     //build the HTML and place data in it
     nameInput.setAttribute('value', `${finalData.product}`)
     imgInput.setAttribute('value', `${finalData.imgUrl}`)
-    descriptionInput.setAttribute('value', `${finalData.description}`)
+    descriptionInput.value=('value', `${finalData.description}`)
     priceInput.setAttribute('value', `${finalData.price}`)
     quantityInput.setAttribute('value', `${finalData.productAmt}`)
     
